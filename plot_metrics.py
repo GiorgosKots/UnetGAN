@@ -191,7 +191,7 @@ def plot_jsd_fred(iteration_losses, jsd_history, fred_history, total_iterations,
     plt.ylabel('FReD Score')
     # Set y-axis range based on your observed FReD values
     # For example, if your FReD scores range between 0-100:
-    plt.ylim(0, 100)  # Adjust this based on your actual FReD values
+    plt.ylim(0, 5)  # Adjust this based on your actual FReD values
     plt.legend()
     plt.grid(True)
 
