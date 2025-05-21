@@ -2,10 +2,7 @@ import torch
 import numpy as np
 import os
 
-def sample_and_analyze(generator, num_samples, epoch=0, batch_size=64, device="cpu"):
-    # Number of samples to generate
-    num_samples = num_samples * batch_size
-
+def sample_and_analyze(generator, num_samples=320, epoch=0, device="cpu"):
     # Decode function
     inv_charmap = {0: 'P', 1: 'A', 2: 'T', 3: 'G', 4: 'C'}
 
