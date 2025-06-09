@@ -11,6 +11,6 @@ WUGAN is a project aimed at generating antimicrobial peptides (AMPs) using a Gen
 ## How It Works
 
 1. **Data Preparation**: The model is trained on a dataset of known antimicrobial peptide sequences.
-2. **Model Architecture**: The GAN consists of a generator and a discriminator. The generator uses a U-Net architecture to produce peptide sequences, while the discriminator evaluates their authenticity.
+2. **Model Architecture**: The GAN consists of a generator and a discriminator. The generator produces peptide sequences, while the discriminator uses a U-Net architecture to evaluate their authenticity.
 3. **Training**: The model is trained using the Wasserstein loss function, which helps in achieving more stable training dynamics and improved output quality.
 4. **Generation**: Once trained, the generator can produce new peptide sequences that have potential antimicrobial properties.
