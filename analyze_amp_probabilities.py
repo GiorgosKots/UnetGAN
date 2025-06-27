@@ -25,6 +25,7 @@ def calculate_percentages(file_path, type="random forest"):
     # Calculate the percentages
     percentage_above_0_5 = (above_0_5 / total) * 100
     percentage_above_0_8 = (above_0_8 / total) * 100
+    
 
     # Print the results
     print(f"Percentage above 0.5 ({type}): {percentage_above_0_5:.2f}%")

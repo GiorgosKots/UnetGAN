@@ -2,7 +2,16 @@ import torch
 import numpy as np
 import os
 
-def sample_and_analyze(generator, epoch=0, device="cpu"):
+def sample_and_analyze(generator=None, epoch=0, device="cpu", pre_generated=None):
+    """
+    Generate or use pre-generated sequences for analysis
+    
+    Args:
+        generator: Generator model (optional if pre_generated provided)
+        epoch: Current epoch number
+        device: Device to use
+        pre_generated: Pre-generated sequences tensor (optional)
+    """
     # Number of samples to generate
     num_samples = 320
 
@@ -13,16 +22,19 @@ def sample_and_analyze(generator, epoch=0, device="cpu"):
         indices = np.argmax(seq, axis=1)
         return ''.join([inv_charmap[idx] for idx in indices])
 
-    # Generate sequences
-    generator.eval()
-    with torch.no_grad():
-        noise = torch.randn(num_samples, 128).to(device)
-        generated_sequences = generator(noise)
+    # Use pre-generated sequences or generate new ones
+    if pre_generated is not None:
+        generated_sequences = pre_generated
+    else:
+        # Generate sequences
+        generator.eval()
+        with torch.no_grad():
+            noise = torch.randn(num_samples, 128).to(device)
+            generated_sequences = generator(noise)
+        generator.train()
 
-        # Convert to list of strings
-        decoded_seqs = [decode_sequence(seq.cpu().numpy()) for seq in generated_sequences]
-
-    generator.train()
+    # Convert to list of strings
+    decoded_seqs = [decode_sequence(seq.cpu().numpy()) for seq in generated_sequences]
 
     return decoded_seqs
 
